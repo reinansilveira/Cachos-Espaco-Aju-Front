@@ -5,6 +5,10 @@ import { currency } from "../../_shared/dashboard.utils";
 import { useOpenDashboardModal } from "../../_shared/stores/dashboard-modals.store";
 import type { ReferencePanelsModel } from "../hooks/use-reference-panels";
 import { ArrowIcon, MiniStats } from "./ReferencePanelPrimitives";
+import {
+  appointmentStatus,
+  scheduleState,
+} from "@/components/shadcn/appointment-status.utils";
 
 export const CalendarReferencePanel = ({
   appointments,
@@ -280,14 +284,10 @@ export const CalendarReferencePanel = ({
           )}
           {calendar.dailySchedule.map((appointment, index) => {
             const scheduledAt = new Date(appointment.scheduledAt);
-            const status = /complete/i.test(appointment.status)
-              ? "Concluído"
-              : /cancel/i.test(appointment.status)
-                ? "Cancelado"
-                : "Agendado";
+            const status = appointmentStatus(appointment.status).label;
             const name = appointment.client.name;
             const barber = appointment.professional?.name ?? "Profissional";
-            const state = index < 2 ? "done" : index === 2 ? "now" : "upcoming";
+            const state = scheduleState(appointment);
 
             return (
               <div

@@ -564,6 +564,24 @@
           background: #f43f5e;
         }
       }
+
+      &--confirmed {
+        background: #eff6ff;
+        color: #1d4ed8;
+        border-color: #bfdbfe;
+        .status-badge__dot {
+          background: #3b82f6;
+        }
+      }
+
+      &--no-show {
+        background: #f4f4f5;
+        color: #52525b;
+        border-color: #d4d4d8;
+        .status-badge__dot {
+          background: #71717a;
+        }
+      }
     }
 
     .appointments-table__status > button {

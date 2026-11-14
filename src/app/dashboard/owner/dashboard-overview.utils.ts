@@ -1,5 +1,4 @@
 import type { Appointment } from "@/services/appointment";
-import { isCompleted } from "../_shared/dashboard.utils";
 import type { Payment } from "./owner.types";
 
 export type RevenuePeriod = "week" | "month" | "year";
@@ -142,9 +141,6 @@ export const formatTimeUntil = (scheduledAt: string, now: Date) => {
   if (minutes < 1440) return `Em ${Math.round(minutes / 60)} h`;
   return shortDate.format(new Date(scheduledAt));
 };
-
-export const getAppointmentStatusText = (status: string) =>
-  isCompleted(status) || status === "confirmed" ? "Completed" : "Pending";
 
 export const getServiceName = (appointment: Appointment) => {
   const service = appointment.service as Appointment["service"] | string;

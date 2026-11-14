@@ -5,7 +5,6 @@ import {
   buildServiceMix,
   buildTeamPerformance,
   formatTimeUntil,
-  getAppointmentStatusText,
   getGreeting,
   getServiceName,
   getUpcomingAppointments,
@@ -106,12 +105,6 @@ describe("dashboard overview utils", () => {
     expect(formatTimeUntil("2026-11-01T18:00:00.000Z", now)).toBe("Em 3 h");
     expect(formatTimeUntil("2026-11-10T15:00:00.000Z", now)).toBe("10 de nov.");
     expect(formatTimeUntil("2026-11-01T14:00:00.000Z", now)).toBe("Em 0 min");
-  });
-
-  it("traduz o status para o selo da tabela", () => {
-    expect(getAppointmentStatusText("COMPLETED")).toBe("Completed");
-    expect(getAppointmentStatusText("confirmed")).toBe("Completed");
-    expect(getAppointmentStatusText("PENDING")).toBe("Pending");
   });
 
   it("aceita o serviço como texto ou objeto", () => {

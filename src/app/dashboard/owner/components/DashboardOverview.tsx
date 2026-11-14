@@ -18,7 +18,6 @@ import {
   REVENUE_PERIOD_NAMES,
   REVENUE_PERIODS,
   formatTimeUntil,
-  getAppointmentStatusText,
   getServiceName,
 } from "../dashboard-overview.utils";
 import { exportFinancialReport } from "../financial-report";
@@ -182,9 +181,7 @@ export const DashboardOverview = ({
                     </td>
                     <td>
                       <div className="appointments-table__status">
-                        <AppointmentStatusBadge
-                          status={getAppointmentStatusText(item.status)}
-                        />
+                        <AppointmentStatusBadge status={item.status} />
                         <AppointmentStatusAction
                           id={item.id}
                           status={item.status}
