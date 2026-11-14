@@ -119,16 +119,34 @@
     }
   }
 
+  // No celular as oito telas cabem em duas linhas, com o nome embaixo do
+  // ícone: nada escondido atrás de rolagem lateral.
   @include max(650) {
     min-height: auto;
 
     &__nav {
-      display: flex;
-      overflow: auto;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.4rem;
     }
 
     &__nav-item {
-      flex: 0 0 4rem;
+      flex-direction: column;
+      gap: 0.35rem;
+      min-width: 0;
+      padding: 0.7rem 0.2rem;
+      font-size: 1.05rem;
+      line-height: 1.2;
+      text-align: center;
+      overflow-wrap: anywhere;
+
+      &--active {
+        border-left: 0;
+      }
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
     }
 
     &__footer {
