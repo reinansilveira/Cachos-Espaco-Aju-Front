@@ -417,7 +417,8 @@ $max: 1320px;
   justify-content: space-between;
   gap: 20px;
   height: 78px;
-  padding: 0 $gutter;
+  // Em telas largas, alinha logo e botões com o conteúdo das seções.
+  padding: 0 max(#{$gutter}, calc((100% - #{$max}) / 2));
   color: $on-dark;
   transition:
     background 0.35s,
