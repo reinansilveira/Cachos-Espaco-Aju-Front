@@ -1,0 +1,206 @@
+@use "../../assets/sass/utilities/variables" as *;
+@use "../../assets/sass/utilities/utilities" as *;
+
+.stock-panel {
+  font-family: $secondary-font;
+
+  &__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 32rem;
+    align-items: start;
+    gap: 2rem;
+
+    @include max(1200) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.stock-list {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+}
+
+.stock-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid $dashboard-border-soft;
+  border-radius: 1.6rem;
+  background: $dashboard-background;
+
+  @include max(700) {
+    grid-template-columns: 1fr auto;
+
+    .stock-item__actions {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__type {
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    padding: 0.2rem 0.9rem;
+    border-radius: 999px;
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    &--sale {
+      background: $dashboard-brand-soft;
+      color: $brand-chocolate;
+    }
+
+    &--internal {
+      background: rgba($brand-olive, 0.15);
+      color: $brand-olive;
+    }
+  }
+
+  &__name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $dashboard-ink;
+  }
+
+  &__meta {
+    font-size: 1.3rem;
+    color: $dashboard-muted;
+  }
+
+  &__quantity {
+    display: grid;
+    justify-items: center;
+    min-width: 7.2rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 1.2rem;
+    background: $dashboard-surface;
+
+    b {
+      font-family: $primary-font;
+      font-size: 2.6rem;
+      line-height: 1;
+      color: $dashboard-ink;
+    }
+
+    span {
+      font-size: 1.1rem;
+      color: $dashboard-muted;
+    }
+
+    &--low {
+      background: $dashboard-warning-background;
+
+      b,
+      span {
+        color: $dashboard-warning-ink;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+}
+
+.stock-history {
+  &__list {
+    display: grid;
+    gap: 1.2rem;
+    list-style: none;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2rem;
+    align-items: start;
+
+    b {
+      display: block;
+      font-size: 1.4rem;
+      color: $dashboard-ink;
+    }
+
+    small {
+      display: block;
+      font-size: 1.2rem;
+      color: $dashboard-muted;
+    }
+  }
+
+  &__delta {
+    display: grid;
+    place-items: center;
+    min-width: 4.4rem;
+    height: 3.2rem;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    &--in {
+      background: $dashboard-success-background;
+      color: $dashboard-success-ink;
+    }
+
+    &--out {
+      background: $dashboard-brand-soft;
+      color: $brand-chocolate;
+    }
+  }
+}
+
+.movement-types {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+
+  &__option {
+    display: grid;
+    gap: 0.2rem;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid $dashboard-border;
+    border-radius: 1.4rem;
+    background: $dashboard-surface;
+    text-align: left;
+
+    b {
+      font-size: 1.5rem;
+      color: $dashboard-ink;
+    }
+
+    small {
+      font-size: 1.2rem;
+      color: $dashboard-muted;
+    }
+
+    &--selected {
+      border-color: $brand-caramel;
+      background: $dashboard-brand-soft;
+    }
+  }
+}
+
+.movement-preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: 1.2rem;
+  background: $dashboard-background;
+  font-size: 1.4rem;
+  color: $dashboard-muted;
+
+  b {
+    color: $dashboard-ink;
+  }
+
+  &__negative {
+    color: $dashboard-danger-ink;
+  }
+}

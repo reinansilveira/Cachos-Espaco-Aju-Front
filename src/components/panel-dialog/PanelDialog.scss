@@ -1,0 +1,75 @@
+@use "../../assets/sass/utilities/variables" as *;
+
+.panel-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 1.6rem;
+  background: rgba($brand-espresso, 0.55);
+  backdrop-filter: blur(2px);
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 52rem);
+    max-height: calc(100dvh - 3.2rem);
+    overflow: hidden;
+    border-radius: 2rem;
+    background: $dashboard-surface;
+    box-shadow: 0 3rem 8rem rgba($brand-espresso, 0.35);
+    font-family: $secondary-font;
+    color: $dashboard-ink;
+
+    &--wide {
+      width: min(100%, 96rem);
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.6rem;
+    padding: 2.4rem 2.4rem 1.6rem;
+    border-bottom: 1px solid $dashboard-border-soft;
+  }
+
+  &__eyebrow {
+    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $brand-caramel;
+  }
+
+  &__title {
+    font-family: $primary-font;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  &__close {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    background: $dashboard-neutral-background;
+    color: $dashboard-ink;
+
+    svg {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+
+  &__body {
+    overflow-y: auto;
+    padding: 2rem 2.4rem 2.4rem;
+  }
+}

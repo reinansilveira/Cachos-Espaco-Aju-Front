@@ -1,0 +1,607 @@
+@use "../../assets/sass/utilities/variables" as *;
+@use "../../assets/sass/utilities/utilities" as *;
+
+.orders-panel {
+  font-family: $secondary-font;
+
+  &__upcoming {
+    margin: 0 0 1.6rem;
+    padding: 1.2rem 1.6rem;
+    border-radius: 1.4rem;
+    background: rgba($brand-olive, 0.12);
+    color: $brand-olive;
+    font-size: 1.4rem;
+  }
+
+  .panel-stat:not(:first-child) svg {
+    display: none;
+  }
+}
+
+.orders-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 1.6rem;
+
+  @include max(1100) {
+    grid-template-columns: 1fr;
+  }
+
+  &__column {
+    display: grid;
+    gap: 1rem;
+    padding: 1.4rem;
+    border-radius: 2rem;
+    background: $dashboard-neutral-background;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0.6rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $dashboard-ink;
+
+    span {
+      display: grid;
+      place-items: center;
+      min-width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 999px;
+      background: $dashboard-surface;
+      font-size: 1.2rem;
+    }
+  }
+
+  &__empty {
+    padding: 2rem 0.6rem;
+    font-size: 1.3rem;
+    color: $dashboard-muted;
+    text-align: center;
+  }
+}
+
+.order-card {
+  display: grid;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid $dashboard-border;
+  border-radius: 1.6rem;
+  background: $dashboard-surface;
+  text-align: left;
+  transition:
+    transform $default-trans,
+    box-shadow $default-trans;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1rem 2.4rem rgba($brand-espresso, 0.08);
+  }
+
+  &__top,
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__top b {
+    font-family: $primary-font;
+    font-size: 2rem;
+    color: $brand-chocolate;
+  }
+
+  &__client {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $dashboard-ink;
+  }
+
+  &__meta,
+  &__bottom small {
+    font-size: 1.2rem;
+    color: $dashboard-muted;
+  }
+
+  &__bottom b {
+    font-size: 1.6rem;
+    color: $dashboard-ink;
+  }
+}
+
+.order-status {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  &--open {
+    background: $dashboard-brand-soft;
+    color: $brand-chocolate;
+  }
+
+  &--waiting {
+    background: $dashboard-warning-background;
+    color: $dashboard-warning-ink;
+  }
+
+  &--paid {
+    background: $dashboard-success-background;
+    color: $dashboard-success-ink;
+  }
+
+  &--cancelled {
+    background: $dashboard-neutral-background;
+    color: $dashboard-muted;
+  }
+}
+
+.order-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30rem;
+  gap: 2.4rem;
+
+  @include max(800) {
+    grid-template-columns: 1fr;
+  }
+
+  &__main {
+    display: grid;
+    align-content: start;
+    gap: 2rem;
+  }
+
+  &__client {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.4rem;
+    border-radius: 1.6rem;
+    background: $dashboard-background;
+
+    > svg {
+      flex: 0 0 auto;
+      width: 2.2rem;
+      height: 2.2rem;
+      margin-top: 0.8rem;
+      color: $brand-caramel;
+    }
+
+    b {
+      display: block;
+      font-size: 1.6rem;
+      color: $dashboard-ink;
+    }
+
+    small {
+      font-size: 1.3rem;
+      color: $dashboard-muted;
+    }
+  }
+
+  &__client-search {
+    position: relative;
+    flex: 1;
+
+    .panel-search {
+      background: $dashboard-surface;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: calc(100% + 0.4rem);
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 0.6rem;
+    border: 1px solid $dashboard-border;
+    border-radius: 1.4rem;
+    background: $dashboard-surface;
+    box-shadow: 0 1.6rem 3.2rem rgba($brand-espresso, 0.12);
+    list-style: none;
+
+    button {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border-radius: 1rem;
+      text-align: left;
+
+      &:hover {
+        background: $dashboard-brand-soft;
+      }
+    }
+  }
+}
+
+.order-items {
+  display: grid;
+  gap: 0.8rem;
+  list-style: none;
+
+  &__row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto auto;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid $dashboard-border-soft;
+    border-radius: 1.4rem;
+
+    @include max(600) {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  }
+
+  &__kind {
+    padding: 0.2rem 0.9rem;
+    border-radius: 999px;
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    &--service {
+      background: rgba($brand-olive, 0.15);
+      color: $brand-olive;
+    }
+
+    &--product {
+      background: $dashboard-brand-soft;
+      color: $brand-chocolate;
+    }
+  }
+
+  &__info {
+    b {
+      display: block;
+      font-size: 1.5rem;
+      color: $dashboard-ink;
+    }
+
+    small {
+      font-size: 1.2rem;
+      color: $dashboard-muted;
+    }
+  }
+
+  &__qty {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    .panel-icon-button {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  &__total {
+    min-width: 8rem;
+    font-size: 1.5rem;
+    text-align: right;
+    color: $dashboard-ink;
+  }
+}
+
+.order-add {
+  display: grid;
+  gap: 1.4rem;
+  padding: 1.6rem;
+  border: 1px dashed $brand-sand;
+  border-radius: 1.6rem;
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    h3 {
+      font-family: $primary-font;
+      font-size: 2rem;
+      color: $dashboard-ink;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 1rem;
+    list-style: none;
+  }
+
+  &__product {
+    position: relative;
+    display: grid;
+    gap: 0.2rem;
+    width: 100%;
+    padding: 1.2rem 4rem 1.2rem 1.4rem;
+    border: 1px solid $dashboard-border;
+    border-radius: 1.4rem;
+    background: $dashboard-surface;
+    text-align: left;
+
+    b {
+      font-size: 1.4rem;
+      color: $dashboard-ink;
+    }
+
+    small {
+      font-size: 1.2rem;
+      color: $dashboard-muted;
+    }
+
+    svg {
+      position: absolute;
+      top: 50%;
+      right: 1.2rem;
+      width: 2rem;
+      height: 2rem;
+      padding: 0.3rem;
+      border-radius: 50%;
+      background: $brand-chocolate;
+      color: $brand-cream;
+      transform: translateY(-50%);
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $brand-caramel;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__empty {
+    font-size: 1.3rem;
+    color: $dashboard-muted;
+  }
+
+  &__service {
+    max-width: 40rem;
+  }
+}
+
+.order-summary {
+  display: grid;
+  align-content: start;
+  gap: 1.6rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  background: linear-gradient(160deg, $brand-paper, $brand-cream);
+  border: 1px solid $dashboard-border;
+
+  &__lines {
+    display: grid;
+    gap: 1rem;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.5rem;
+      color: $dashboard-ink-soft;
+    }
+  }
+
+  &__total {
+    padding-top: 1.2rem;
+    border-top: 1px solid $dashboard-border;
+
+    dt,
+    dd {
+      font-family: $primary-font;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: $dashboard-ink;
+    }
+  }
+
+  &__discount input {
+    width: 10rem;
+    min-height: 3.6rem;
+    padding: 0 1rem;
+    border: 1px solid $dashboard-border;
+    border-radius: 1rem;
+    background: $dashboard-surface;
+    font: inherit;
+    text-align: right;
+  }
+
+  &__due {
+    dt,
+    dd {
+      font-weight: 700;
+      color: $dashboard-ink;
+    }
+  }
+
+  &__paid {
+    padding: 1rem 1.2rem;
+    border-radius: 1.2rem;
+    background: $dashboard-success-background;
+    color: $dashboard-success-ink;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  &__actions {
+    display: grid;
+    gap: 0.8rem;
+
+    .panel-button--ghost-danger {
+      margin-right: 0;
+    }
+  }
+
+  &__note {
+    font-size: 1.2rem;
+    color: $dashboard-muted;
+  }
+}
+
+.order-pay {
+  display: grid;
+  gap: 1.6rem;
+
+  &__options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+
+    @include max(500) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__option {
+    position: relative;
+    display: grid;
+    gap: 0.2rem;
+    padding: 1.4rem;
+    border: 1px solid $dashboard-border;
+    border-radius: 1.4rem;
+    background: $dashboard-surface;
+    text-align: left;
+
+    b {
+      font-size: 1.5rem;
+      color: $dashboard-ink;
+    }
+
+    small {
+      font-size: 1.2rem;
+      color: $dashboard-muted;
+    }
+
+    &--selected {
+      border-color: $brand-caramel;
+      background: $dashboard-brand-soft;
+    }
+  }
+
+  &__tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.1rem 0.7rem;
+    border-radius: 999px;
+    background: rgba($brand-olive, 0.15);
+    color: $brand-olive;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  &__hint {
+    font-size: 1.4rem;
+    color: $dashboard-muted;
+  }
+
+  &__submit {
+    min-height: 4.8rem;
+    font-size: 1.5rem;
+  }
+
+  &__waiting,
+  &__done {
+    display: grid;
+    justify-items: center;
+    gap: 1.6rem;
+    text-align: center;
+  }
+
+  &__qr {
+    width: 22rem;
+    height: 22rem;
+    padding: 1rem;
+    border-radius: 1.6rem;
+    background: #fff;
+    border: 1px solid $dashboard-border;
+  }
+
+  &__code {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+
+    code {
+      padding: 1.2rem;
+      border-radius: 1.2rem;
+      background: $dashboard-background;
+      font-size: 1.2rem;
+      word-break: break-all;
+      color: $dashboard-ink-soft;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.4rem;
+    color: $dashboard-muted;
+
+    svg {
+      width: 1.8rem;
+      height: 1.8rem;
+      animation: order-pay-spin 1.2s linear infinite;
+    }
+  }
+
+  &__switch {
+    font-size: 1.3rem;
+    color: $brand-caramel;
+    text-decoration: underline;
+  }
+
+  &__done {
+    padding: 2rem 0;
+
+    svg {
+      width: 5.6rem;
+      height: 5.6rem;
+      color: $dashboard-success-ink;
+    }
+
+    h3 {
+      font-family: $primary-font;
+      font-size: 2.6rem;
+      color: $dashboard-ink;
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: $dashboard-muted;
+    }
+  }
+}
+
+@keyframes order-pay-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-pay__status svg {
+    animation: none;
+  }
+}

@@ -1,0 +1,258 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+main {
+  position: relative;
+  background-color: #fbf7f2;
+  z-index: 1;
+
+  &:not(:has(section)) {
+    height: calc(100vh - 8.1rem);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #a86b45;
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.8rem;
+  left: 0.8rem;
+  z-index: 1000;
+  padding: 1rem 1.6rem;
+  border-radius: 0.6rem;
+  background: #2a1b14;
+  color: #f6eee4;
+  font:
+    600 1.4rem var(--font-inter),
+    sans-serif;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 0;
+}
+
+.ui-avatar {
+  position: relative;
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
+  overflow: hidden;
+  place-items: center;
+  border-radius: 0.55rem;
+  background: #eceff1;
+  color: #505761;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.ui-avatar__image {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.ui-avatar__fallback {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+}
+.ui-avatar__badge {
+  position: absolute;
+  z-index: 2;
+  right: 0.05rem;
+  bottom: 0.05rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #16c784;
+}
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 0.45rem;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+.ui-button--default {
+  background: #18181b;
+  color: #fff;
+}
+.ui-button--outline {
+  border-color: #e4e4e7;
+  background: #fff;
+  color: #27272a;
+}
+.ui-button--ghost {
+  background: transparent;
+  color: #71717a;
+}
+.ui-button--sm {
+  min-height: 2rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 1rem;
+}
+.ui-button--icon {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+}
+.ui-progress {
+  display: grid;
+  gap: 0.4rem;
+  width: 100%;
+}
+.ui-progress__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #71757b;
+  font-size: 1rem;
+}
+.ui-progress__value {
+  color: #34363a;
+  font-weight: 700;
+}
+.ui-progress__track {
+  height: 0.32rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eef0f1;
+}
+.ui-progress__indicator {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #12c98a;
+  transition: width 180ms ease;
+}
+.ui-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #f6a311;
+}
+.ui-rating__stars {
+  display: inline-flex;
+  gap: 0.08rem;
+}
+.ui-rating__stars svg {
+  width: 0.78rem;
+  height: 0.78rem;
+  stroke-width: 1.5;
+}
+.ui-rating__value {
+  color: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  outline: none;
+  border: none;
+  font-family: inherit;
+}
+
+a,
+button {
+  color: inherit;
+  text-decoration: none;
+  transition: 0.2s ease-in-out opacity;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1440px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #003575;
+  border-radius: 10px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Páginas do site do salão (.salon) têm menu e rodapé próprios. */
+body:has(.salon) > .header,
+body:has(.salon) > .footer {
+  display: none;
+}
+
+body:has(.salon) > main {
+  background-color: #f3ede3;
+}

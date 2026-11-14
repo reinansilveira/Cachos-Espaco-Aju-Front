@@ -1,0 +1,385 @@
+@use "../../../assets/sass/utilities/variables" as *;
+@use "../../../assets/sass/utilities/utilities" as *;
+
+// Peças das telas de estoque e comanda, usadas no painel da dona e no da
+// profissional.
+
+// A fonte de destaque tem algarismos antigos ("1" parece "I"); em números,
+// usamos os alinhados.
+.panel-stat b,
+.stock-item__quantity b,
+.order-card__top b,
+.order-summary__total dd,
+.panel-dialog__title {
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
+
+  &__eyebrow {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $brand-caramel;
+  }
+
+  &__title {
+    font-family: $primary-font;
+    font-size: 3.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: $dashboard-ink;
+  }
+
+  &__subtitle {
+    max-width: 56rem;
+    margin-top: 0.4rem;
+    font-size: 1.4rem;
+    color: $dashboard-muted;
+  }
+}
+
+.panel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  min-height: 4.2rem;
+  padding: 0 1.8rem;
+  border-radius: 999px;
+  background: $brand-chocolate;
+  color: $brand-cream;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background $default-trans,
+    opacity $default-trans;
+
+  svg {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  &:hover {
+    background: $brand-espresso;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  &--soft {
+    background: $dashboard-brand-soft;
+    color: $brand-chocolate;
+
+    &:hover {
+      background: $brand-sand;
+    }
+  }
+
+  &--gold {
+    background: $brand-gold;
+    color: $brand-espresso;
+
+    &:hover {
+      background: $brand-caramel;
+      color: $brand-cream;
+    }
+  }
+
+  &--ghost-danger {
+    margin-right: auto;
+    background: transparent;
+    color: $dashboard-danger-ink;
+
+    &:hover {
+      background: $dashboard-danger-background;
+    }
+  }
+}
+
+.panel-icon-button {
+  display: grid;
+  place-items: center;
+  width: 3.8rem;
+  height: 3.8rem;
+  border-radius: 50%;
+  background: $dashboard-neutral-background;
+  color: $dashboard-ink-soft;
+
+  svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  &:hover {
+    background: $brand-sand;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.panel-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
+
+  @include max(900) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.panel-stat {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1.8rem 2rem;
+  border: 1px solid $dashboard-border;
+  border-radius: 1.6rem;
+  background: $dashboard-surface;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    color: $brand-caramel;
+  }
+
+  span {
+    font-size: 1.3rem;
+    color: $dashboard-muted;
+  }
+
+  b {
+    font-family: $primary-font;
+    font-size: 2.8rem;
+    line-height: 1.1;
+    color: $dashboard-ink;
+  }
+
+  &--alert {
+    border-color: rgba($dashboard-warning-ink, 0.35);
+    background: $dashboard-warning-background;
+
+    svg {
+      color: $dashboard-warning-ink;
+    }
+  }
+}
+
+.panel-card {
+  padding: 2rem;
+  border: 1px solid $dashboard-border;
+  border-radius: 2rem;
+  background: $dashboard-surface;
+  box-shadow: $dashboard-panel-shadow;
+
+  &__title {
+    margin-bottom: 1.6rem;
+    font-family: $primary-font;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: $dashboard-ink;
+  }
+}
+
+.panel-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-bottom: 1.6rem;
+}
+
+.panel-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.panel-chip {
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  background: $dashboard-neutral-background;
+  color: $dashboard-ink-soft;
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  &--active {
+    background: $brand-chocolate;
+    color: $brand-cream;
+  }
+}
+
+.panel-search {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 24rem;
+  padding: 0 1.4rem;
+  border: 1px solid $dashboard-border;
+  border-radius: 999px;
+  background: $dashboard-background;
+
+  svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: $dashboard-muted;
+  }
+
+  input {
+    flex: 1;
+    min-height: 4rem;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 1.4rem;
+    color: $dashboard-ink;
+    outline: none;
+  }
+
+  @include max(600) {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.panel-empty {
+  display: grid;
+  justify-items: center;
+  gap: 1.2rem;
+  padding: 4rem 1.6rem;
+  font-size: 1.4rem;
+  color: $dashboard-muted;
+  text-align: center;
+
+  svg {
+    width: 3.2rem;
+    height: 3.2rem;
+    color: $brand-gold;
+  }
+}
+
+.panel-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+
+  @include max(600) {
+    grid-template-columns: 1fr;
+  }
+
+  &__field {
+    display: grid;
+    gap: 0.6rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: $dashboard-ink-soft;
+
+    input,
+    select {
+      width: 100%;
+      min-width: 0;
+      min-height: 4.4rem;
+      padding: 0 1.4rem;
+      border: 1px solid $dashboard-border;
+      border-radius: 1.2rem;
+      background: $dashboard-background;
+      font: inherit;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: $dashboard-ink;
+
+      &:focus {
+        border-color: $brand-caramel;
+        outline: none;
+      }
+    }
+
+    &--wide {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__choice {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+    border: 0;
+
+    legend {
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: $dashboard-ink-soft;
+    }
+
+    @include max(600) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__option {
+    display: flex;
+    gap: 1rem;
+    padding: 1.4rem;
+    border: 1px solid $dashboard-border;
+    border-radius: 1.4rem;
+    cursor: pointer;
+
+    &:has(input:checked) {
+      border-color: $brand-caramel;
+      background: $dashboard-brand-soft;
+    }
+
+    input {
+      accent-color: $brand-chocolate;
+    }
+
+    span {
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    b {
+      font-size: 1.5rem;
+      color: $dashboard-ink;
+    }
+
+    small {
+      font-size: 1.2rem;
+      color: $dashboard-muted;
+    }
+  }
+
+  &__error {
+    grid-column: 1 / -1;
+    padding: 1rem 1.4rem;
+    border-radius: 1.2rem;
+    background: $dashboard-danger-background;
+    color: $dashboard-danger-ink;
+    font-size: 1.4rem;
+  }
+
+  &__footer {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 0.8rem;
+  }
+}

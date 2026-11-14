@@ -1,0 +1,61 @@
+@use "../../../assets/sass/utilities/utilities" as *;
+
+.dashboard-page {
+  display: grid;
+  gap: 1.7rem;
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  @include max(900) {
+  }
+  @include max(650) {
+    &__header {
+      flex-direction: column;
+    }
+  }
+}
+
+.dashboard-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.8rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  font-weight: 500;
+
+  & > svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+}
+
+@include max(900) {
+}
+
+@include max(650) {
+}
+
+.settings-page {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  .reference-page__head h1 {
+    font-size: 1.7rem;
+  }
+  .reference-page__head p {
+    font-size: 1rem;
+  }
+}
+
+@include max(900) {
+}

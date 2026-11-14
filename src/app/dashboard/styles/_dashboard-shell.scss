@@ -1,0 +1,46 @@
+@use "../../../assets/sass/utilities/utilities" as *;
+
+.dashboard-shell {
+  display: grid;
+  grid-template-columns: 21rem minmax(0, 1fr);
+  min-height: 100vh;
+
+  &__sidebar {
+    min-height: 100vh;
+    padding: 2.2rem 1.25rem 1.8rem;
+    border-right: 1px solid #eee;
+    background: #fff;
+  }
+
+  &__main {
+    min-width: 0;
+    background: #fafafa;
+  }
+
+  &__topbar {
+    display: flex;
+    min-height: 5.6rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.8rem;
+    border-bottom: 1px solid #ededed;
+    background: #fff;
+  }
+
+  &__content {
+    padding: 2.65rem 2.8rem 3rem;
+  }
+
+  @include max(1000) {
+    grid-template-columns: 6.6rem minmax(0, 1fr);
+  }
+  @include max(650) {
+    display: block;
+    &__sidebar {
+      min-height: auto;
+    }
+    &__content {
+      padding: 1.7rem 1.2rem;
+    }
+  }
+}

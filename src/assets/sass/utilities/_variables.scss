@@ -1,0 +1,138 @@
+$primary-font: var(--font-display), serif;
+$secondary-font: var(--font-inter), sans-serif;
+
+$default-trans: 0.3s ease-in-out;
+
+$default-black: #2a1b14;
+$default-surface: #3a271d;
+
+$default-amber: #c9a06a;
+$default-amber-dark: #4a3123;
+
+$default-cream: #f6eee4;
+
+// Paleta do Espaço Cachos Aju (logo marrom e dourado, salão em madeira,
+// parede verde-oliva e espelhos em arco).
+$brand-espresso: #2a1b14;
+$brand-chocolate: #6b4330;
+$brand-caramel: #a86b45;
+$brand-gold: #c9a06a;
+$brand-sand: #ead9c6;
+$brand-cream: #f6eee4;
+$brand-paper: #fbf7f2;
+$brand-olive: #6f7a4e;
+$brand-ink: #2a1b14;
+$brand-muted: #7a6a5e;
+$script-font: var(--font-script), cursive;
+
+$default-grey-warm: #bfae9f;
+$default-grey-ink: #8a7666;
+$default-border-dark: #5a4335;
+
+$default-success: #00d26a;
+$default-error: #ff003d;
+
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.15);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+$color-gradient: linear-gradient(135deg, #c9a06a 0%, #6b4330 100%);
+
+$dashboard-ink: #2e211a;
+$dashboard-ink-soft: #6c5a4e;
+$dashboard-muted: #7a6a5e;
+$dashboard-muted-strong: #6f5d51;
+$dashboard-border: #eadfd3;
+$dashboard-border-soft: #f2eae1;
+$dashboard-surface: #fff;
+$dashboard-background: #fbf7f2;
+
+$dashboard-brand: #8a5a3c;
+$dashboard-brand-strong: #6b4330;
+$dashboard-brand-soft: #f4e9de;
+$dashboard-brand-tint: #ead9c6;
+$dashboard-teal: #6f7a4e;
+
+$dashboard-success-background: #def6e7;
+$dashboard-success-ink: #16854a;
+$dashboard-warning-background: #fff0d5;
+$dashboard-warning-ink: #956111;
+$dashboard-danger-background: #ffe5e7;
+$dashboard-danger-ink: #c52d37;
+$dashboard-neutral-background: #f2ece5;
+
+$dashboard-sidebar-from: #3a2519;
+$dashboard-sidebar-to: #24160f;
+$dashboard-sidebar-ink: #e8d9c8;
+
+$dashboard-radius-sm: 0.5rem;
+$dashboard-radius-md: 0.8rem;
+$dashboard-radius-lg: 1.2rem;
+$dashboard-radius-pill: 2rem;
+$dashboard-panel-shadow: 0 0.8rem 2.5rem rgba(#4a3123, 0.05);
+
+$dashboard-breakpoint-tablet: 900px;
+$dashboard-breakpoint-mobile: 600px;
+
+$dashboard-trend-colors: (
+  up: (
+    bg: $dashboard-success-background,
+    ink: $dashboard-success-ink,
+  ),
+  down: (
+    bg: $dashboard-danger-background,
+    ink: $dashboard-danger-ink,
+  ),
+  flat: (
+    bg: $dashboard-neutral-background,
+    ink: $dashboard-muted-strong,
+  ),
+);
+
+$dashboard-status-colors: (
+  complete: (
+    bg: $dashboard-success-background,
+    ink: $dashboard-success-ink,
+  ),
+  pending: (
+    bg: $dashboard-warning-background,
+    ink: $dashboard-warning-ink,
+  ),
+  cancelled: (
+    bg: $dashboard-danger-background,
+    ink: $dashboard-danger-ink,
+  ),
+);
+
+$ink: $dashboard-ink;
+$ink-soft: $dashboard-ink-soft;
+$muted: $dashboard-muted;
+$muted-strong: $dashboard-muted-strong;
+$border: $dashboard-border;
+$border-soft: $dashboard-border-soft;
+$surface: $dashboard-surface;
+$bg: $dashboard-background;
+$brand: $dashboard-brand;
+$brand-strong: $dashboard-brand-strong;
+$brand-soft: $dashboard-brand-soft;
+$brand-tint: $dashboard-brand-tint;
+$teal: $dashboard-teal;
+$success-bg: $dashboard-success-background;
+$success-ink: $dashboard-success-ink;
+$warning-bg: $dashboard-warning-background;
+$warning-ink: $dashboard-warning-ink;
+$danger-bg: $dashboard-danger-background;
+$danger-ink: $dashboard-danger-ink;
+$neutral-bg: $dashboard-neutral-background;
+$sidebar-from: $dashboard-sidebar-from;
+$sidebar-to: $dashboard-sidebar-to;
+$sidebar-ink: $dashboard-sidebar-ink;
+$radius-sm: $dashboard-radius-sm;
+$radius-md: $dashboard-radius-md;
+$radius-lg: $dashboard-radius-lg;
+$radius-pill: $dashboard-radius-pill;
+$shadow-panel: $dashboard-panel-shadow;
+$bp-tablet: $dashboard-breakpoint-tablet;
+$bp-mobile: $dashboard-breakpoint-mobile;
+$trend-colors: $dashboard-trend-colors;
+$status-colors: $dashboard-status-colors;
